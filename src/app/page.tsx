@@ -20,18 +20,19 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-[var(--background)]">
+    <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
       {/* Navigation */}
-      <motion.nav 
+      <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        className="fixed w-full top-0 z-50 bg-black/10 backdrop-blur-lg border-b border-white/10"
+        className="fixed w-full top-0 z-50 glass border-b border-white/5"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <motion.span 
-              className="text-xl font-bold gradient-text"
+            <motion.span
+              className="text-xl font-bold text-gradient-shine"
               whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               Portfolio
             </motion.span>
@@ -40,8 +41,8 @@ export default function Home() {
                 <motion.a
                   key={item}
                   href={`#${item.toLowerCase()}`}
-                  className="text-gray-300 hover:text-white transition-colors"
-                  whileHover={{ y: -2 }}
+                  className="text-[var(--muted)] hover:text-white smooth-transition hover-lift"
+                  whileHover={{ scale: 1.05 }}
                 >
                   {item}
                 </motion.a>
@@ -64,7 +65,7 @@ export default function Home() {
           className="text-center max-w-3xl"
         >
           <motion.div 
-            className="w-32 h-32 rounded-full overflow-hidden mx-auto mb-8 border-2 gradient-border"
+            className="w-32 h-32 rounded-full overflow-hidden mx-auto mb-8 border-2 animate-border-glow"
             whileHover={{ scale: 1.05 }}
           >
             <Image
@@ -76,7 +77,7 @@ export default function Home() {
               priority
             />
           </motion.div>
-          <h1 className="text-6xl font-bold mb-4 gradient-text">
+          <h1 className="text-6xl font-bold mb-4 text-gradient-shine">
             Hello, I'm a Developer
           </h1>
           <p className="text-xl mb-8 text-gray-300">
@@ -87,7 +88,7 @@ export default function Home() {
               href="#projects"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-block px-8 py-3 rounded-full bg-[var(--primary)] hover:bg-[var(--secondary)] transition-colors duration-300"
+              className="inline-block px-8 py-3 rounded-full card-gradient hover:bg-[var(--surface)] smooth-transition border border-[var(--primary)]/20 hover:border-[var(--primary)]/40 hover:shadow-lg hover:shadow-[var(--primary)]/5"
             >
               View My Work
             </motion.a>
@@ -95,7 +96,7 @@ export default function Home() {
               href="#contact"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-block px-8 py-3 rounded-full border-2 gradient-border hover:bg-[var(--secondary)] transition-colors duration-300"
+              className="inline-block px-8 py-3 rounded-full bg-[var(--surface)]/50 hover:bg-[var(--surface)] smooth-transition border border-[var(--accent)]/20 hover:border-[var(--accent)]/40 hover:shadow-lg hover:shadow-[var(--accent)]/5"
             >
               Contact Me
             </motion.a>
@@ -116,7 +117,7 @@ export default function Home() {
         initial="initial"
         whileInView="animate"
         viewport={{ once: true }}
-        className="py-20 px-8 bg-white/5"
+        className="py-20 px-8 section-gradient"
       >
         <motion.div 
           variants={staggerContainer}
@@ -124,7 +125,7 @@ export default function Home() {
         >
           <motion.h2 
             variants={fadeInUp}
-            className="text-4xl font-bold text-center mb-16 gradient-text flex items-center justify-center gap-2"
+            className="text-4xl font-bold text-center mb-16 text-gradient-shine flex items-center justify-center gap-2"
           >
             <User className="w-8 h-8" /> About Me
           </motion.h2>
@@ -170,8 +171,9 @@ export default function Home() {
               <motion.div
                 key={skill}
                 variants={fadeInUp}
-                className="bg-white/5 rounded-lg p-4 text-center hover:bg-white/10 transition-colors"
-                whileHover={{ y: -5 }}
+                className="card-gradient rounded-lg p-6 text-center hover-lift animate-border-glow"
+                whileHover={{ y: -5, scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
               >
                 <span className="text-lg font-medium">{skill}</span>
               </motion.div>
@@ -186,7 +188,7 @@ export default function Home() {
         initial="initial"
         whileInView="animate"
         viewport={{ once: true }}
-        className="py-20 px-8 bg-white/5"
+        className="py-20 px-8 section-gradient"
       >
         <motion.div variants={staggerContainer} className="max-w-6xl mx-auto">
           <motion.h2 
@@ -200,10 +202,10 @@ export default function Home() {
               <motion.div
                 key={project}
                 variants={fadeInUp}
-                whileHover={{ y: -10 }}
-                className="bg-black/20 rounded-xl overflow-hidden backdrop-blur-sm"
+                whileHover={{ y: -8, scale: 1.02 }}
+                className="card-gradient rounded-xl overflow-hidden group animate-shine"
               >
-                <div className="h-48 bg-gradient-to-br from-primary/20 to-secondary/20 relative">
+                <div className="h-48 bg-gradient-to-br from-[var(--primary)]/5 to-[var(--accent)]/5 relative group-hover:from-[var(--primary)]/10 group-hover:to-[var(--accent)]/10 smooth-transition">
                   <Image
                     src={`/project-${project}.jpg`}
                     alt={`Project ${project}`}
@@ -270,7 +272,7 @@ export default function Home() {
               <motion.div
                 key={index}
                 variants={fadeInUp}
-                className="relative pl-8 border-l-2 border-[var(--primary)]"
+                className="relative pl-8 border-l-2 border-[var(--primary)]/30 hover:border-[var(--primary)] smooth-transition animate-border-glow"
               >
                 <div className="absolute w-4 h-4 bg-[var(--primary)] rounded-full -left-[9px] top-0" />
                 <h3 className="text-xl font-bold mb-1">{exp.title}</h3>
@@ -288,7 +290,7 @@ export default function Home() {
         initial="initial"
         whileInView="animate"
         viewport={{ once: true }}
-        className="py-20 px-8 bg-white/5"
+        className="py-20 px-8 section-gradient"
       >
         <motion.div variants={staggerContainer} className="max-w-6xl mx-auto">
           <motion.h2
@@ -305,24 +307,24 @@ export default function Home() {
               I'm always interested in hearing about new projects and opportunities.
               Feel free to reach out if you'd like to connect!
             </p>
-            <div className="flex justify-center gap-8 text-[var(--primary)]">
+            <div className="flex justify-center gap-8">
               <motion.a 
                 href="#" 
-                className="hover:text-[var(--secondary)] transition-colors"
+                className="text-[var(--primary)] hover:text-[var(--accent)] smooth-transition"
                 whileHover={{ y: -5 }}
               >
                 <Github className="w-8 h-8" />
               </motion.a>
               <motion.a 
                 href="#" 
-                className="hover:text-[var(--secondary)] transition-colors"
+                className="text-[var(--primary)] hover:text-[var(--accent)] smooth-transition"
                 whileHover={{ y: -5 }}
               >
                 <Linkedin className="w-8 h-8" />
               </motion.a>
               <motion.a 
                 href="mailto:your.email@example.com" 
-                className="hover:text-[var(--secondary)] transition-colors"
+                className="text-[var(--primary)] hover:text-[var(--accent)] smooth-transition"
                 whileHover={{ y: -5 }}
               >
                 <Mail className="w-8 h-8" />
@@ -333,7 +335,7 @@ export default function Home() {
       </motion.div>
 
       {/* Footer */}
-      <footer className="py-8 px-8 border-t border-white/10">
+      <footer className="py-8 px-8 border-t border-[var(--primary)]/10">
         <div className="max-w-6xl mx-auto text-center text-gray-400">
           <p>© {new Date().getFullYear()} Youssef Boumalek. All rights reserved.</p>
         </div>
